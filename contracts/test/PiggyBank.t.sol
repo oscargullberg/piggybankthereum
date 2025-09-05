@@ -36,11 +36,11 @@ contract PiggyBankTest is Test {
         PiggyBank p = _deployAsOwner(0);
 
         vm.prank(owner);
-        (bool s1, ) = address(p).call{value: 1 ether}("");
+        (bool s1,) = address(p).call{value: 1 ether}("");
         assertTrue(s1);
 
         vm.prank(alice);
-        (bool s2, ) = address(p).call{value: 0.5 ether}("");
+        (bool s2,) = address(p).call{value: 0.5 ether}("");
         assertTrue(s2);
 
         assertEq(address(p).balance, 1.5 ether);
@@ -105,7 +105,7 @@ contract PiggyBankTest is Test {
         vm.prank(alice);
         vm.expectEmit(true, false, false, true, address(p));
         emit PiggyBank.Deposited(alice, 1 ether);
-        (bool ok, ) = address(p).call{value: 1 ether}("");
+        (bool ok,) = address(p).call{value: 1 ether}("");
         assertTrue(ok);
     }
 

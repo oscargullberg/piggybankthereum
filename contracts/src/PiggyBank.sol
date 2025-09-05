@@ -43,7 +43,7 @@ contract PiggyBank {
         uint256 bal = address(this).balance;
         if (bal == 0) revert NoFunds();
 
-        (bool ok, ) = payable(owner).call{value: bal}("");
+        (bool ok,) = payable(owner).call{value: bal}("");
         if (!ok) revert TransferFailed();
 
         emit Withdrew(owner, bal);
